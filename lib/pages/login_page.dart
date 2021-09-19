@@ -31,10 +31,16 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 50, right: 50),
-                child: TextField(
+                padding: const EdgeInsets.all(10),
+                child: TextFormField(
+                  obscureText: _isPasswordHidden,
                   decoration: InputDecoration(
-                    hintText: 'Hello',
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    hintText: 'Password',
+                    suffixIcon: IconButton(
+                      onPressed: () => _togglePassView(),
+                      icon: const Icon(Icons.visibility),
                   ),
                 ),
               ),
@@ -43,5 +49,14 @@ class LoginPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _togglePassView() {
+    if (_isPasswordHidden == true) {
+      _isPasswordHidden = false;
+    } else {
+      _isPasswordHidden = true;
+    }
+    setState(() {});
   }
 }

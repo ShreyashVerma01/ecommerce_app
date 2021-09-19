@@ -1,18 +1,26 @@
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
+
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  bool _isPasswordHidden = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        // backgroundColor: Colors.white10,
+        backgroundColor: Colors.white10,
         title: Text(
           'Login Page',
           style: TextStyle(
-            color: Colors.black38,
+            color: Colors.black,
+            fontSize: 35,
           ),
         ),
       ),
@@ -20,14 +28,16 @@ class LoginPage extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: EdgeInsets.only(top: 500),
-              ),
-              Text(
-                'Login pls',
-                style: TextStyle(
-                  fontSize: 20,
+                padding: const EdgeInsets.all(10),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    hintText: 'Username',
+                  ),
                 ),
               ),
               Padding(
@@ -41,9 +51,9 @@ class LoginPage extends StatelessWidget {
                     suffixIcon: IconButton(
                       onPressed: () => _togglePassView(),
                       icon: const Icon(Icons.visibility),
+                    ),
                   ),
                 ),
-              ),
               ),
               ElevatedButton(
                 onPressed: null,
